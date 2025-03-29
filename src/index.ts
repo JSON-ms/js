@@ -7,7 +7,7 @@ export function useJsonMs() {
   };
 
   const handler = {
-    get(target: any, prop: string, receiver: any) {
+    get(target: any, prop: string) {
       return target[prop];
     },
     set(target: any, prop: string, value: any) {
