@@ -32,15 +32,15 @@ Why bindToEditor()? Because your project is loaded from an iFrame within JSON.ms
 
 #### bindToEditor Options
 
-The bindToEditor function upports optional parameters for customization:
+The bindToEditor function supports optional parameters for customization:
 
 ```ts
-const bindToEditor = (options: {
+(options: {
   targetOrigin?: string; // Target origin of the iframe (default: *)
   onDataChange?: (data: any) => void; // Callback when data changes
   onLocaleChange?: (locale: string) => void; // Callback when locale changes
   onSectionChange?: (section: string) => void; // Callback when section changes
-});
+})
 ```
 Now your project is ready to communicate with JSON.ms! You can use the callback functions to update your data as it is modified live by the user from the data editor.
 
