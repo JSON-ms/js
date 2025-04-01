@@ -66,6 +66,12 @@ export function useJsonMs() {
             if (options.onDataChange) {
               options.onDataChange(data);
             }
+            if (options.onSectionChange) {
+              options.onSectionChange(data.section);
+            }
+            if (options.onLocaleChange) {
+              options.onLocaleChange(data.locale);
+            }
             break;
           case 'section':
             if (options.onSectionChange) {
