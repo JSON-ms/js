@@ -1,3 +1,8 @@
+export interface JmsSection<N> {
+  name: N,
+  paths: string[],
+}
+
 export function useJsonMs() {
 
   const state = {
@@ -46,11 +51,11 @@ export function useJsonMs() {
     return applyParams(getValueByPath(proxy.data, path), params);
   }
 
-  const bindToEditor = (options: {
+  const bindToEditor = <S = string>(options: {
     targetOrigin?: string,
     onDataChange?: (data: any) => void,
     onLocaleChange?: (locale: string) => void,
-    onSectionChange?: (section: string) => void,
+    onSectionChange?: (section: JmsSection<S>) => void,
   } = {}) => {
 
     options.targetOrigin = options.targetOrigin ?? '*';
@@ -75,7 +80,11 @@ export function useJsonMs() {
             break;
           case 'section':
             if (options.onSectionChange) {
-              options.onSectionChange(event.data.data);
+              try {
+                options.onSectionChange(JSON.parse(event.data.data));
+              } catch (e) {
+                console.error(e);
+              }
             }
             break;
           case 'locale':
